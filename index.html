@@ -97,6 +97,7 @@
         border-bottom: 1px solid var(--border);
       }
       .navbar-inner {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -107,7 +108,75 @@
         align-items: center;
         gap: 0.25rem;
       }
-      .logo-main {
+      .nav-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 9999px;
+        background: var(--bg2);
+        transition: background 0.15s;
+      }
+      .nav-toggle:hover {
+        background: var(--border);
+      }
+      .nav-toggle svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+      .nav-links {
+        display: none;
+        align-items: center;
+        gap: 2.5rem;
+      }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 1rem 1.5rem 1.5rem;
+        background: rgba(250, 250, 247, 0.98);
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+        z-index: 10;
+      }
+      .nav-links.open a {
+        width: 100%;
+        padding: 0.85rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+      .nav-links.open a:last-child {
+        border-bottom: none;
+      }
+      @media (min-width: 768px) {
+        .nav-toggle {
+          display: none;
+        }
+        .nav-links {
+          display: flex;
+          position: static;
+          flex-direction: row;
+          padding: 0;
+          box-shadow: none;
+          background: transparent;
+        }
+        .nav-links.open {
+          position: static;
+          box-shadow: none;
+          background: transparent;
+        }
+      }
+      .nav-links a {
+        font-size: 0.875rem;
+        color: #3f3f46;
+        letter-spacing: 0.025em;
+        transition: color 0.15s;
+      }
         font-family: "Playfair Display", serif;
         font-size: 1.5rem;
         color: var(--text);
@@ -1424,6 +1493,19 @@
           <span class="logo-main">Studio</span>
           <span class="logo-accent">Hogar</span>
         </a>
+        <button class="nav-toggle" id="btn-menu" aria-label="Abrir menú móvil">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M4 7h16" />
+            <path d="M4 12h16" />
+            <path d="M4 17h16" />
+          </svg>
+        </button>
         <nav class="nav-links" aria-label="Navegación principal">
           <a href="#home">Inicio</a>
           <a href="#productos">Productos</a>
@@ -1578,6 +1660,7 @@
         <div class="coll-grid">
           <button
             class="coll-card coll-wide"
+            data-filter="sillas"
             aria-label="Ver colección: Sillas ergonómicas"
           >
             <img
@@ -1608,7 +1691,7 @@
           </button>
           <button
             class="coll-card coll-narrow"
-            data-category="sofas"
+            data-filter="sofas"
             aria-label="Ver colección: Sofás modernos"
           >
             <img
@@ -1639,6 +1722,7 @@
           </button>
           <button
             class="coll-card coll-narrow"
+            data-filter="iluminacion"
             aria-label="Ver colección: Iluminación"
           >
             <img
@@ -1669,6 +1753,7 @@
           </button>
           <button
             class="coll-card coll-wide"
+            data-filter="escritorios"
             aria-label="Ver colección: Escritorios"
           >
             <img
@@ -2525,9 +2610,21 @@
       // ── EVENT DELEGATION ─────────────────────────────────────────
       document.addEventListener("click", function (e) {
         const el = e.target.closest(
-          "[data-action], [data-filter], #btn-cart, #btn-login, #close-cart, #close-product, #close-login, #do-login, #do-register, [data-tab], .overlay, .btn-checkout, .btn-google",
+          "[data-action], [data-filter], #btn-cart, #btn-login, #btn-menu, .nav-links a, #close-cart, #close-product, #close-login, #do-login, #do-register, [data-tab], .overlay, .btn-checkout, .btn-google",
         );
         if (!el) return;
+
+        // Mobile menu toggle
+        if (el.id === "btn-menu") {
+          document.querySelector(".nav-links").classList.toggle("open");
+          return;
+        }
+
+        // Close mobile menu on navigation click
+        if (el.matches(".nav-links a")) {
+          document.querySelector(".nav-links").classList.remove("open");
+          return;
+        }
 
         // Cart icon
         if (el.id === "btn-cart") {
@@ -2603,6 +2700,12 @@
               b.classList.toggle("active", b.dataset.filter === activeFilter),
             );
           renderProducts(activeFilter);
+          if (el.closest(".coll-card")) {
+            document.getElementById("productos").scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
           return;
         }
 

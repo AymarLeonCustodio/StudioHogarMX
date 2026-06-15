@@ -1,0 +1,2670 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studio Hogar | Muebles de Diseño</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ===== RESET & BASE ===== */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      :root {
+        --bg: #fafaf7;
+        --bg2: #f3f0ea;
+        --surface: #ffffff;
+        --text: #1a1a1a;
+        --text2: #5c5c5c;
+        --accent: #8a7e72;
+        --border: #e8e5e0;
+        --border2: #efece6;
+        --footer: #111111;
+        --radius: 0.75rem;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Outfit", system-ui, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .serif {
+        font-family: "Playfair Display", Georgia, serif;
+        letter-spacing: -0.01em;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      button {
+        cursor: pointer;
+        font-family: inherit;
+        border: none;
+        background: none;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+      }
+      ::selection {
+        background: #1a1a1a;
+        color: #fff;
+      }
+
+      /* ===== LAYOUT ===== */
+      .container {
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+      @media (min-width: 768px) {
+        .container {
+          padding: 0 2.5rem;
+        }
+      }
+
+      /* ===== NAVBAR ===== */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        width: 100%;
+        backdrop-filter: blur(12px);
+        background: rgba(250, 250, 247, 0.82);
+        border-bottom: 1px solid var(--border);
+      }
+      .navbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 5rem;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+      .logo-main {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        color: var(--text);
+        letter-spacing: -0.02em;
+      }
+      .logo-accent {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        color: var(--accent);
+        font-style: italic;
+        letter-spacing: -0.02em;
+      }
+      .nav-links {
+        display: none;
+        align-items: center;
+        gap: 2.5rem;
+      }
+      @media (min-width: 768px) {
+        .nav-links {
+          display: flex;
+        }
+      }
+      .nav-links a {
+        font-size: 0.875rem;
+        color: #3f3f46;
+        letter-spacing: 0.025em;
+        transition: color 0.15s;
+      }
+      .nav-links a:hover {
+        color: var(--text);
+      }
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .btn-cuenta {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        height: 2rem;
+        padding: 0 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--text);
+        transition: background 0.15s;
+      }
+      .btn-cuenta:hover {
+        background: rgba(138, 126, 114, 0.12);
+      }
+      .btn-cuenta svg {
+        width: 1rem;
+        height: 1rem;
+      }
+      .btn-cart {
+        position: relative;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        transition: background 0.15s;
+      }
+      .btn-cart:hover {
+        background: var(--bg2);
+      }
+      .btn-cart svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        color: #27272a;
+      }
+      .cart-badge {
+        position: absolute;
+        top: -0.125rem;
+        right: -0.125rem;
+        background: #1a1a1a;
+        color: #fff;
+        width: 1.1rem;
+        height: 1.1rem;
+        border-radius: 9999px;
+        font-size: 0.65rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: pop 0.2s ease;
+      }
+      @keyframes pop {
+        0% {
+          transform: scale(0);
+        }
+        70% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* ===== HERO ===== */
+      .hero {
+        padding: 4rem 0 5rem;
+        overflow: hidden;
+        position: relative;
+      }
+      .hero-grid {
+        display: grid;
+        gap: 3rem;
+        align-items: center;
+      }
+      @media (min-width: 768px) {
+        .hero-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        color: var(--accent);
+        margin-bottom: 1.5rem;
+      }
+      .hero-eyebrow svg {
+        width: 0.875rem;
+        height: 0.875rem;
+      }
+      .hero-h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        line-height: 1.05;
+        color: #18181b;
+        margin-bottom: 1.5rem;
+      }
+      .hero-h1 em {
+        color: var(--accent);
+        font-style: normal;
+        font-weight: 500;
+      }
+      .hero-sub {
+        font-size: 1rem;
+        color: #52525b;
+        max-width: 30rem;
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+      }
+      @media (min-width: 768px) {
+        .hero-sub {
+          font-size: 1.125rem;
+        }
+      }
+      .hero-btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 3.5rem;
+      }
+      .btn-prim {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0 2rem;
+        height: 3rem;
+        background: #1a1a1a;
+        color: #fff;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        letter-spacing: 0.025em;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+      .btn-prim:hover {
+        background: #333;
+        transform: translateY(-1px);
+      }
+      .btn-prim svg {
+        width: 1rem;
+        height: 1rem;
+      }
+      .btn-sec {
+        display: inline-flex;
+        align-items: center;
+        padding: 0 2rem;
+        height: 3rem;
+        border: 1px solid #18181b;
+        color: #18181b;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        letter-spacing: 0.025em;
+        transition: all 0.2s;
+      }
+      .btn-sec:hover {
+        background: #18181b;
+        color: #fff;
+      }
+      .hero-stats {
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+      }
+      .stat-num {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        color: #18181b;
+      }
+      .stat-lbl {
+        font-size: 0.7rem;
+        color: #71717a;
+        margin-top: 0.25rem;
+        letter-spacing: 0.025em;
+      }
+      .stat-div {
+        width: 1px;
+        height: 2.5rem;
+        background: var(--border);
+      }
+      .hero-img-wrap {
+        position: relative;
+      }
+      .hero-img-blur {
+        position: absolute;
+        top: -1.5rem;
+        right: -1.5rem;
+        width: 18rem;
+        height: 18rem;
+        background: var(--bg2);
+        border-radius: 9999px;
+        filter: blur(64px);
+        opacity: 0.7;
+        pointer-events: none;
+      }
+      .hero-img {
+        position: relative;
+        aspect-ratio: 4/5;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+      }
+      .hero-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .hero-badge {
+        position: absolute;
+        bottom: -1.5rem;
+        left: -1.5rem;
+        background: #fff;
+        border-radius: 1rem;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+        padding: 1rem 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .badge-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 9999px;
+        background: var(--bg2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+      }
+      .badge-up {
+        font-size: 0.7rem;
+        color: #71717a;
+      }
+      .badge-dn {
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      /* ===== CATALOG ===== */
+      .catalog {
+        background: var(--bg);
+        padding: 5rem 0 7rem;
+      }
+      .section-eyebrow {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        color: var(--accent);
+        margin-bottom: 0.75rem;
+      }
+      .section-h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: #18181b;
+        max-width: 30rem;
+        line-height: 1.25;
+      }
+      .catalog-head {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
+      @media (min-width: 768px) {
+        .catalog-head {
+          flex-direction: row;
+          align-items: flex-end;
+          justify-content: space-between;
+        }
+      }
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .filter-btn {
+        padding: 0 1rem;
+        height: 2.5rem;
+        border: 1px solid var(--border);
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        color: #3f3f46;
+        background: #fff;
+        transition: all 0.15s;
+      }
+      .filter-btn:hover {
+        border-color: #18181b;
+      }
+      .filter-btn.active {
+        background: #18181b;
+        color: #fff;
+        border-color: #18181b;
+      }
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.5rem;
+      }
+      @media (min-width: 560px) {
+        .products-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 1024px) {
+        .products-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (min-width: 1280px) {
+        .products-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      /* ===== PRODUCT CARD ===== */
+      .card {
+        background: #fff;
+        border-radius: 1rem;
+        overflow: hidden;
+        border: 1px solid var(--border2);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+        transition:
+          transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 22px 60px rgba(0, 0, 0, 0.09);
+      }
+      .card-img-wrap {
+        position: relative;
+        aspect-ratio: 4/5;
+        overflow: hidden;
+        background: var(--bg2);
+      }
+      .card-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s ease;
+      }
+      .card:hover .card-img-wrap img {
+        transform: scale(1.05);
+      }
+      .btn-quickview {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: translateX(0.5rem);
+        transition: all 0.2s;
+      }
+      .card:hover .btn-quickview {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .btn-quickview svg {
+        width: 1rem;
+        height: 1rem;
+        color: #27272a;
+      }
+      .card-body {
+        padding: 1.25rem;
+      }
+      .card-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        margin-bottom: 0.375rem;
+      }
+      .card-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.05rem;
+        color: #18181b;
+        line-height: 1.375;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+      }
+      .card-stars {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 0.75rem;
+        color: #52525b;
+        flex-shrink: 0;
+      }
+      .star {
+        color: #f59e0b;
+        fill: #f59e0b;
+        width: 0.875rem;
+        height: 0.875rem;
+      }
+      .card-desc {
+        font-size: 0.875rem;
+        color: #71717a;
+        line-height: 1.625;
+        min-height: 2.6rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        margin-bottom: 1rem;
+      }
+      .card-price {
+        font-family: "Playfair Display", serif;
+        font-size: 1.25rem;
+        color: #18181b;
+        margin-bottom: 1rem;
+      }
+      .card-actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+      .btn-details {
+        flex: 1;
+        height: 2.5rem;
+        border-radius: 9999px;
+        border: 1px solid #d4d4d8;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: #3f3f46;
+        background: #fff;
+        transition: all 0.15s;
+      }
+      .btn-details:hover {
+        border-color: #18181b;
+      }
+      .btn-add {
+        flex: 1;
+        height: 2.5rem;
+        border-radius: 9999px;
+        background: #1a1a1a;
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.375rem;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+      .btn-add:hover {
+        background: #333;
+        transform: translateY(-1px);
+      }
+      .btn-add svg {
+        width: 0.875rem;
+        height: 0.875rem;
+      }
+
+      /* ===== COLLECTIONS ===== */
+      .collections {
+        background: var(--bg2);
+        padding: 5rem 0 7rem;
+      }
+      .coll-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        grid-auto-rows: 280px;
+        margin-top: 3rem;
+      }
+      @media (min-width: 768px) {
+        .coll-grid {
+          grid-template-columns: repeat(6, 1fr);
+          grid-auto-rows: 320px;
+        }
+        .coll-wide {
+          grid-column: span 4;
+        }
+        .coll-narrow {
+          grid-column: span 2;
+        }
+      }
+      .coll-card {
+        position: relative;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        cursor: pointer;
+        text-align: left;
+        transition: all 0.5s ease;
+      }
+      .coll-card:hover .coll-img {
+        transform: scale(1.05);
+      }
+      .coll-card:hover .coll-arrow-icon {
+        background: #fff;
+        color: #18181b;
+      }
+      .coll-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s ease;
+      }
+      .coll-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.7) 0%,
+          rgba(0, 0, 0, 0.2) 50%,
+          transparent 100%
+        );
+      }
+      .coll-content {
+        position: relative;
+        height: 100%;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        color: #fff;
+      }
+      @media (min-width: 768px) {
+        .coll-content {
+          padding: 2rem;
+        }
+      }
+      .coll-sub {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        opacity: 0.9;
+        margin-bottom: 0.5rem;
+      }
+      .coll-row {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .coll-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        line-height: 1.25;
+      }
+      @media (min-width: 768px) {
+        .coll-title {
+          font-size: 1.875rem;
+        }
+      }
+      .coll-arrow-icon {
+        width: 2.75rem;
+        height: 2.75rem;
+        flex-shrink: 0;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(4px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+      }
+      .coll-arrow-icon svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+      .coll-see {
+        margin-top: 0.75rem;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        opacity: 0.8;
+      }
+
+      /* ===== CONTACT ===== */
+      .contact {
+        background: var(--bg);
+        padding: 5rem 0 7rem;
+      }
+      .contact-grid {
+        display: grid;
+        gap: 3rem;
+      }
+      @media (min-width: 768px) {
+        .contact-grid {
+          grid-template-columns: 1fr 1fr;
+          align-items: start;
+        }
+      }
+      .contact-info-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        margin-bottom: 2.5rem;
+      }
+      .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .contact-icon {
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 9999px;
+        background: var(--bg2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .contact-icon svg {
+        width: 1rem;
+        height: 1rem;
+        color: #3f3f46;
+      }
+      .contact-lbl {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #71717a;
+      }
+      .contact-val {
+        color: #18181b;
+        margin-top: 0.125rem;
+      }
+      .socials {
+        display: flex;
+        gap: 0.75rem;
+      }
+      .social-btn {
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 9999px;
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+      }
+      .social-btn:hover {
+        background: #18181b;
+        color: #fff;
+        border-color: #18181b;
+      }
+      .social-btn svg {
+        width: 1rem;
+        height: 1rem;
+      }
+      .contact-form {
+        background: #fff;
+        border-radius: 1.5rem;
+        padding: 2rem;
+        border: 1px solid var(--border2);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+      }
+      @media (min-width: 768px) {
+        .contact-form {
+          padding: 2.5rem;
+        }
+      }
+      .form-group {
+        margin-bottom: 1.25rem;
+      }
+      .form-label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+      .form-input,
+      .form-textarea {
+        width: 100%;
+        border: 1px solid var(--border);
+        border-radius: calc(var(--radius) - 2px);
+        padding: 0 0.75rem;
+        font-family: inherit;
+        font-size: 0.9rem;
+        background: transparent;
+        color: var(--text);
+        outline: none;
+        transition: border-color 0.15s;
+      }
+      .form-input {
+        height: 2.75rem;
+      }
+      .form-textarea {
+        padding: 0.625rem 0.75rem;
+        resize: vertical;
+        min-height: 7rem;
+      }
+      .form-input:focus,
+      .form-textarea:focus {
+        border-color: #18181b;
+      }
+      .form-input::placeholder,
+      .form-textarea::placeholder {
+        color: #9ca3af;
+      }
+      .btn-submit {
+        width: 100%;
+        height: 3rem;
+        border-radius: 9999px;
+        background: #1a1a1a;
+        color: #fff;
+        font-size: 0.875rem;
+        font-weight: 500;
+        letter-spacing: 0.025em;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+      .btn-submit:hover {
+        background: #333;
+        transform: translateY(-1px);
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background: var(--footer);
+        color: #e5e5e5;
+        padding: 4rem 0 1.5rem;
+      }
+      .footer-grid {
+        display: grid;
+        gap: 3rem;
+        margin-bottom: 3.5rem;
+      }
+      @media (min-width: 768px) {
+        .footer-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        margin-bottom: 1.25rem;
+      }
+      .footer-logo-main {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        color: #fff;
+      }
+      .footer-logo-accent {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        color: #a89e91;
+        font-style: italic;
+      }
+      .footer-desc {
+        font-size: 0.875rem;
+        line-height: 1.7;
+        color: #a8a8a8;
+        max-width: 22rem;
+      }
+      .footer-h {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #fff;
+        margin-bottom: 1.25rem;
+      }
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .footer-links a {
+        font-size: 0.875rem;
+        color: #a8a8a8;
+        transition: color 0.15s;
+      }
+      .footer-links a:hover {
+        color: #fff;
+      }
+      .pay-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.875rem;
+        color: #a8a8a8;
+        margin-bottom: 0.75rem;
+      }
+      .pay-item svg {
+        width: 1rem;
+        height: 1rem;
+        flex-shrink: 0;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 0.75rem;
+        color: #7a7a7a;
+      }
+      @media (min-width: 768px) {
+        .footer-bottom {
+          flex-direction: row;
+        }
+      }
+      .footer-legal {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      /* ===== CART DRAWER ===== */
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .overlay.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .overlay.centered {
+        align-items: center;
+        justify-content: center;
+      }
+      .drawer {
+        background: #fff;
+        width: 420px;
+        max-width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .overlay.open .drawer {
+        transform: translateX(0);
+      }
+      /* En móvil el drawer ocupa toda la pantalla y se desliza desde abajo */
+      @media (max-width: 500px) {
+        .overlay {
+          align-items: flex-end;
+          justify-content: stretch;
+        }
+        .drawer {
+          width: 100vw;
+          height: 92vh;
+          transform: translateY(100%);
+          border-radius: 1.25rem 1.25rem 0 0;
+        }
+        .overlay.open .drawer {
+          transform: translateY(0);
+        }
+      }
+      .modal {
+        background: #fff;
+        border-radius: 1.5rem;
+        padding: 2rem;
+        max-width: 480px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        transform: scale(0.94) translateY(1rem);
+        transition:
+          transform 0.25s ease,
+          opacity 0.25s ease;
+        opacity: 0;
+      }
+      .overlay.open .modal {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+      @media (max-width: 500px) {
+        .modal {
+          width: 95%;
+          padding: 1.5rem;
+          max-height: 92vh;
+        }
+      }
+      .drawer-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .drawer-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.25rem;
+      }
+      .close-btn {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 9999px;
+        background: var(--bg2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        color: var(--text2);
+        transition: background 0.15s;
+      }
+      .close-btn:hover {
+        background: var(--border);
+      }
+      .drawer-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 1.5rem;
+      }
+      .drawer-footer {
+        padding: 1.5rem;
+        border-top: 1px solid var(--border);
+      }
+
+      /* Cart items */
+      .cart-empty {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: var(--accent);
+      }
+      .cart-empty-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+      .cart-empty-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        color: var(--text);
+        margin-bottom: 0.375rem;
+      }
+      .cart-item {
+        display: flex;
+        gap: 1rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid #f3f0ea;
+        align-items: flex-start;
+      }
+      .cart-item-img {
+        width: 70px;
+        height: 70px;
+        border-radius: 0.75rem;
+        object-fit: cover;
+        background: var(--bg2);
+        flex-shrink: 0;
+      }
+      .cart-item-name {
+        font-family: "Playfair Display", serif;
+        font-size: 0.9rem;
+        color: var(--text);
+        margin-bottom: 0.25rem;
+      }
+      .cart-item-price {
+        font-size: 0.875rem;
+        color: var(--text2);
+        margin-bottom: 0.5rem;
+      }
+      .cart-qty {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .qty-btn {
+        width: 1.75rem;
+        height: 1.75rem;
+        border-radius: 9999px;
+        border: 1px solid var(--border);
+        background: #fff;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.15s;
+      }
+      .qty-btn:hover {
+        background: #1a1a1a;
+        color: #fff;
+        border-color: #1a1a1a;
+      }
+      .qty-num {
+        font-size: 0.875rem;
+        font-weight: 500;
+        min-width: 1.5rem;
+        text-align: center;
+      }
+      .remove-btn {
+        background: none;
+        border: none;
+        color: #9ca3af;
+        font-size: 0.8rem;
+        cursor: pointer;
+        padding: 0.25rem;
+        transition: color 0.15s;
+      }
+      .remove-btn:hover {
+        color: #dc2626;
+      }
+      .cart-total-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      .cart-total-lbl {
+        font-size: 0.875rem;
+        color: var(--text2);
+      }
+      .cart-total-val {
+        font-family: "Playfair Display", serif;
+        font-size: 1.25rem;
+        color: var(--text);
+      }
+      .btn-checkout {
+        width: 100%;
+        height: 3rem;
+        border-radius: 9999px;
+        background: #1a1a1a;
+        color: #fff;
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+      .btn-checkout:hover {
+        background: #333;
+        transform: translateY(-1px);
+      }
+
+      /* Product modal */
+      .modal-close-row {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 0.5rem;
+      }
+      .prod-modal-img {
+        width: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        border-radius: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      .prod-modal-rating {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-size: 0.875rem;
+        color: var(--text2);
+        margin-bottom: 0.75rem;
+      }
+      .prod-modal-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        color: var(--text);
+        margin-bottom: 0.5rem;
+      }
+      .prod-modal-price {
+        font-family: "Playfair Display", serif;
+        font-size: 1.25rem;
+        color: var(--text);
+        margin-bottom: 1rem;
+      }
+      .prod-modal-desc {
+        font-size: 0.9rem;
+        color: var(--text2);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Login modal */
+      .modal-tabs {
+        display: flex;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 1.5rem;
+      }
+      .modal-tab {
+        flex: 1;
+        padding: 0.75rem;
+        text-align: center;
+        font-size: 0.875rem;
+        color: var(--accent);
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .modal-tab.active {
+        color: var(--text);
+        border-bottom-color: var(--text);
+        font-weight: 500;
+      }
+      .modal-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        margin-bottom: 0.375rem;
+      }
+      .modal-sub {
+        font-size: 0.875rem;
+        color: var(--accent);
+        margin-bottom: 1.5rem;
+      }
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 1.25rem 0;
+        color: #9ca3af;
+        font-size: 0.8rem;
+      }
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+      .btn-google {
+        width: 100%;
+        height: 3rem;
+        border-radius: 9999px;
+        border: 1px solid var(--border);
+        background: #fff;
+        color: var(--text);
+        font-size: 0.875rem;
+        font-weight: 500;
+        transition: all 0.2s;
+      }
+      .btn-google:hover {
+        border-color: #18181b;
+        background: var(--bg2);
+      }
+
+      /* Toast */
+      .toast-container {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+        pointer-events: none;
+      }
+      .toast {
+        background: #1a1a1a;
+        color: #fff;
+        padding: 0.875rem 1.5rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        pointer-events: auto;
+        white-space: nowrap;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        animation: slideUp 0.3s ease;
+      }
+      .toast.info {
+        background: var(--accent);
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(1rem);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Fade-in animations */
+      .fade-in {
+        animation: fadeIn 0.6s ease both;
+      }
+      .stagger-1 {
+        animation-delay: 0.05s;
+      }
+      .stagger-2 {
+        animation-delay: 0.15s;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===== MOBILE EXTRA ===== */
+      @media (max-width: 500px) {
+        .hero {
+          padding: 2rem 0 3rem;
+        }
+        .hero-badge {
+          bottom: -1rem;
+          left: -0.75rem;
+          padding: 0.75rem 1rem;
+        }
+        .hero-stats {
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+        .catalog {
+          padding: 3rem 0 4rem;
+        }
+        .collections {
+          padding: 3rem 0 4rem;
+        }
+        .contact {
+          padding: 3rem 0 4rem;
+        }
+        .btn-cuenta span {
+          display: none;
+        }
+        .navbar-inner {
+          padding: 0 1rem;
+        }
+        .hero-btns {
+          flex-direction: column;
+        }
+        .hero-btns .btn-prim,
+        .hero-btns .btn-sec {
+          width: 100%;
+          justify-content: center;
+        }
+        .card-actions {
+          flex-direction: column;
+        }
+        .btn-details,
+        .btn-add {
+          width: 100%;
+          justify-content: center;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        .coll-grid {
+          grid-auto-rows: 200px;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        footer {
+          padding: 3rem 0 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===================== NAVBAR ===================== -->
+    <header class="navbar">
+      <div class="container navbar-inner">
+        <a href="#home" class="logo" aria-label="Studio Hogar inicio">
+          <span class="logo-main">Studio</span>
+          <span class="logo-accent">Hogar</span>
+        </a>
+        <nav class="nav-links" aria-label="Navegación principal">
+          <a href="#home">Inicio</a>
+          <a href="#productos">Productos</a>
+          <a href="#colecciones">Colecciones</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="btn-cuenta" id="btn-login" aria-label="Abrir sesión">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            <span>Cuenta</span>
+          </button>
+          <button class="btn-cart" id="btn-cart" aria-label="Abrir carrito">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+              <path d="M3 6h18" />
+              <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+            <span class="cart-badge" id="cart-badge" style="display: none"
+              >0</span
+            >
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===================== HERO ===================== -->
+    <section id="home" class="hero">
+      <div class="container hero-grid">
+        <div class="fade-in">
+          <div class="hero-eyebrow">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <path
+                d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"
+              />
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+            </svg>
+            Diseño consciente · Hecho en México
+          </div>
+          <h1 class="hero-h1">
+            Ofertas especiales<br />
+            para tu <em>hogar.</em>
+          </h1>
+          <p class="hero-sub">
+            Descubre muebles modernos diseñados para brindarte comodidad, estilo
+            y bienestar en cada espacio de tu vida diaria.
+          </p>
+          <div class="hero-btns">
+            <a href="#productos" class="btn-prim">
+              Ver productos
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </a>
+            <a href="#colecciones" class="btn-sec">Explorar catálogo</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="stat-num">12+</div>
+              <div class="stat-lbl">años de diseño</div>
+            </div>
+            <div class="stat-div"></div>
+            <div>
+              <div class="stat-num">4.9★</div>
+              <div class="stat-lbl">reseñas clientes</div>
+            </div>
+            <div class="stat-div"></div>
+            <div>
+              <div class="stat-num">MXN</div>
+              <div class="stat-lbl">envío nacional</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-img-wrap fade-in stagger-2">
+          <div class="hero-img-blur"></div>
+          <div class="hero-img">
+            <img
+              src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1400&q=85"
+              alt="Sofá moderno de lino beige en sala minimalista"
+              loading="eager"
+            />
+          </div>
+          <div class="hero-badge">
+            <div class="badge-icon">%</div>
+            <div>
+              <div class="badge-up">Hasta</div>
+              <div class="badge-dn">30% off · Colección 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CATALOG ===================== -->
+    <section id="productos" class="catalog">
+      <div class="container">
+        <div class="catalog-head">
+          <div>
+            <div class="section-eyebrow">Catálogo</div>
+            <h2 class="section-h2">Piezas que transforman tus espacios.</h2>
+          </div>
+          <div class="filters" role="group" aria-label="Filtros de categoría">
+            <button class="filter-btn active" data-filter="all">Todo</button>
+            <button class="filter-btn" data-filter="sofas">Sofás</button>
+            <button class="filter-btn" data-filter="sillas">Sillas</button>
+            <button class="filter-btn" data-filter="escritorios">
+              Escritorios
+            </button>
+            <button class="filter-btn" data-filter="iluminacion">
+              Iluminación
+            </button>
+          </div>
+        </div>
+        <div class="products-grid" id="products-grid">
+          <!-- JS genera las tarjetas -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== COLLECTIONS ===================== -->
+    <section id="colecciones" class="collections">
+      <div class="container">
+        <div class="section-eyebrow">Colecciones</div>
+        <h2 class="section-h2">Pensado para cada rincón de tu vida.</h2>
+        <div class="coll-grid">
+          <button
+            class="coll-card coll-wide"
+            aria-label="Ver colección: Sillas ergonómicas"
+          >
+            <img
+              class="coll-img"
+              src="https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=1200&q=80"
+              alt="Sillas de oficina ergonómicas"
+            />
+            <div class="coll-overlay"></div>
+            <div class="coll-content">
+              <div class="coll-sub">Trabaja sin dolor</div>
+              <div class="coll-row">
+                <h3 class="coll-title">Sillas de oficina ergonómicas</h3>
+                <div class="coll-arrow-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 7h10v10" />
+                    <path d="M7 17 17 7" />
+                  </svg>
+                </div>
+              </div>
+              <div class="coll-see">Ver colección →</div>
+            </div>
+          </button>
+          <button
+            class="coll-card coll-narrow"
+            data-category="sofas"
+            aria-label="Ver colección: Sofás modernos"
+          >
+            <img
+              class="coll-img"
+              src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1200&q=80"
+              alt="Sofás modernos"
+            />
+            <div class="coll-overlay"></div>
+            <div class="coll-content">
+              <div class="coll-sub">Comodidad escultural</div>
+              <div class="coll-row">
+                <h3 class="coll-title">Sofás modernos</h3>
+                <div class="coll-arrow-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 7h10v10" />
+                    <path d="M7 17 17 7" />
+                  </svg>
+                </div>
+              </div>
+              <div class="coll-see">Ver colección →</div>
+            </div>
+          </button>
+          <button
+            class="coll-card coll-narrow"
+            aria-label="Ver colección: Iluminación"
+          >
+            <img
+              class="coll-img"
+              src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=1200&q=80"
+              alt="Iluminación elegante"
+            />
+            <div class="coll-overlay"></div>
+            <div class="coll-content">
+              <div class="coll-sub">Luz que abraza</div>
+              <div class="coll-row">
+                <h3 class="coll-title">Iluminación elegante</h3>
+                <div class="coll-arrow-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 7h10v10" />
+                    <path d="M7 17 17 7" />
+                  </svg>
+                </div>
+              </div>
+              <div class="coll-see">Ver colección →</div>
+            </div>
+          </button>
+          <button
+            class="coll-card coll-wide"
+            aria-label="Ver colección: Escritorios"
+          >
+            <img
+              class="coll-img"
+              src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=1200&q=80"
+              alt="Escritorios funcionales"
+            />
+            <div class="coll-overlay"></div>
+            <div class="coll-content">
+              <div class="coll-sub">Tu home office, elevado</div>
+              <div class="coll-row">
+                <h3 class="coll-title">Escritorios funcionales</h3>
+                <div class="coll-arrow-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 7h10v10" />
+                    <path d="M7 17 17 7" />
+                  </svg>
+                </div>
+              </div>
+              <div class="coll-see">Ver colección →</div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contacto" class="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div>
+            <div class="section-eyebrow">Contacto</div>
+            <h2 class="section-h2" style="margin-bottom: 1.5rem">
+              Hablemos de tu próximo espacio.
+            </h2>
+            <p
+              style="
+                color: #52525b;
+                line-height: 1.7;
+                max-width: 28rem;
+                margin-bottom: 2.5rem;
+              "
+            >
+              Nuestro equipo de diseño está listo para asesorarte. Cuéntanos qué
+              espacio quieres transformar.
+            </p>
+            <div class="contact-info-list">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="contact-lbl">Email</div>
+                  <div class="contact-val">hola@studiohogar.mx</div>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <div class="contact-lbl">WhatsApp</div>
+                  <div class="contact-val">+52 55 1234 5678</div>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+                    />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="contact-lbl">Showroom</div>
+                  <div class="contact-val">
+                    Huimanguillo, Tabasco · Lun–Sáb 10–19h
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="socials">
+              <button class="social-btn" aria-label="Instagram">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <rect width="20" height="20" x="2" y="2" rx="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                </svg>
+              </button>
+              <button class="social-btn" aria-label="Facebook">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  />
+                </svg>
+              </button>
+              <button class="social-btn" aria-label="Twitter / X">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="c-name">Nombre</label>
+              <input
+                class="form-input"
+                type="text"
+                id="c-name"
+                placeholder="Tu nombre completo"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="c-email">Correo electrónico</label>
+              <input
+                class="form-input"
+                type="email"
+                id="c-email"
+                placeholder="tu@correo.mx"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="c-msg">Mensaje</label>
+              <textarea
+                class="form-textarea"
+                id="c-msg"
+                rows="5"
+                placeholder="¿En qué podemos ayudarte?"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-logo">
+              <span class="footer-logo-main">Studio</span>
+              <span class="footer-logo-accent">Hogar</span>
+            </div>
+            <p class="footer-desc">
+              Muebles diseñados para mejorar tu comodidad y estilo de vida. Cada
+              pieza pensada para transformar tu espacio en un lugar que amas
+              habitar.
+            </p>
+          </div>
+          <div>
+            <p class="footer-h">Enlaces rápidos</p>
+            <nav class="footer-links" aria-label="Links del footer">
+              <a href="#home">Inicio</a>
+              <a href="#productos">Productos</a>
+              <a href="#colecciones">Colecciones</a>
+              <a href="#contacto">Contacto</a>
+            </nav>
+          </div>
+          <div>
+            <p class="footer-h">Métodos de pago</p>
+            <div class="pay-item">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <rect width="20" height="14" x="2" y="5" rx="2" />
+                <line x1="2" x2="22" y1="10" y2="10" />
+              </svg>
+              Tarjeta de crédito / débito
+            </div>
+            <div class="pay-item">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path
+                  d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"
+                />
+                <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" />
+              </svg>
+              PayPal
+            </div>
+            <div class="pay-item">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M10 18v-7" />
+                <path
+                  d="M11.12 2.198a2 2 0 0 1 1.76.006l7.866 3.847c.476.233.31.949-.22.949H3.474c-.53 0-.695-.716-.22-.949z"
+                />
+                <path d="M14 18v-7" />
+                <path d="M18 18v-7" />
+                <path d="M3 22h18" />
+                <path d="M6 18v-7" />
+              </svg>
+              Transferencia bancaria / SPEI
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 Studio Hogar · Diseñado en México</span>
+          <div class="footer-legal">
+            <a href="#">Términos</a>
+            <a href="#">Privacidad</a>
+            <a href="#">Envíos</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===================== CART DRAWER ===================== -->
+    <div
+      class="overlay"
+      id="cart-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Carrito de compras"
+    >
+      <div class="drawer" id="cart-drawer">
+        <div class="drawer-header">
+          <span class="drawer-title">Tu carrito</span>
+          <button class="close-btn" id="close-cart" aria-label="Cerrar carrito">
+            ✕
+          </button>
+        </div>
+        <div class="drawer-body" id="cart-body"></div>
+        <div class="drawer-footer" id="cart-footer" style="display: none">
+          <div class="cart-total-row">
+            <span class="cart-total-lbl">Total</span>
+            <span class="cart-total-val" id="cart-total-val">$0</span>
+          </div>
+          <button class="btn-checkout">Proceder al pago →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== PRODUCT MODAL ===================== -->
+    <div
+      class="overlay centered"
+      id="product-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Detalle de producto"
+    >
+      <div class="modal" id="product-modal">
+        <div class="modal-close-row">
+          <button class="close-btn" id="close-product" aria-label="Cerrar">
+            ✕
+          </button>
+        </div>
+        <img id="pm-img" class="prod-modal-img" src="" alt="" />
+        <div class="prod-modal-rating">
+          <svg
+            class="star"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"
+            />
+          </svg>
+          <span id="pm-rating">5.0</span>
+          <span style="color: #d1d5db">·</span>
+          <span>Producto verificado</span>
+        </div>
+        <div class="prod-modal-name" id="pm-name"></div>
+        <div class="prod-modal-price" id="pm-price"></div>
+        <div class="prod-modal-desc" id="pm-desc"></div>
+        <button
+          class="btn-prim"
+          id="pm-add-btn"
+          style="width: 100%; justify-content: center"
+          onclick="addFromModal()"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+            <path d="M3 6h18" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          Agregar al carrito
+        </button>
+      </div>
+    </div>
+
+    <!-- ===================== LOGIN MODAL ===================== -->
+    <div
+      class="overlay centered"
+      id="login-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Iniciar sesión"
+    >
+      <div class="modal" id="login-modal">
+        <div class="modal-close-row">
+          <button class="close-btn" id="close-login" aria-label="Cerrar">
+            ✕
+          </button>
+        </div>
+        <div class="modal-tabs">
+          <div class="modal-tab active" data-tab="login">Iniciar sesión</div>
+          <div class="modal-tab" data-tab="register">Crear cuenta</div>
+        </div>
+        <div id="pane-login">
+          <div class="modal-title">Bienvenido de nuevo</div>
+          <div class="modal-sub">Accede a tu cuenta para ver tus pedidos</div>
+          <div class="form-group">
+            <label class="form-label" for="l-email">Correo electrónico</label>
+            <input
+              class="form-input"
+              type="email"
+              id="l-email"
+              placeholder="tu@correo.mx"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="l-pass">Contraseña</label>
+            <input
+              class="form-input"
+              type="password"
+              id="l-pass"
+              placeholder="••••••••"
+            />
+          </div>
+          <button
+            class="btn-prim"
+            id="do-login"
+            style="width: 100%; justify-content: center; margin-bottom: 0.75rem"
+          >
+            Iniciar sesión
+          </button>
+          <div class="divider">o continúa con</div>
+          <button class="btn-google">🔵 Google</button>
+        </div>
+        <div id="pane-register" style="display: none">
+          <div class="modal-title">Crea tu cuenta</div>
+          <div class="modal-sub">Únete a Studio Hogar hoy</div>
+          <div class="form-group">
+            <label class="form-label" for="r-name">Nombre completo</label>
+            <input
+              class="form-input"
+              type="text"
+              id="r-name"
+              placeholder="Tu nombre"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="r-email">Correo electrónico</label>
+            <input
+              class="form-input"
+              type="email"
+              id="r-email"
+              placeholder="tu@correo.mx"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="r-pass">Contraseña</label>
+            <input
+              class="form-input"
+              type="password"
+              id="r-pass"
+              placeholder="Mínimo 8 caracteres"
+            />
+          </div>
+          <button
+            class="btn-prim"
+            id="do-register"
+            style="width: 100%; justify-content: center"
+          >
+            Crear cuenta
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== SUCCESS MODAL ===================== -->
+    <div
+      class="overlay centered"
+      id="success-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Compra exitosa"
+    >
+      <div
+        class="modal"
+        id="success-modal"
+        style="text-align: center; max-width: 400px"
+      >
+        <div
+          style="
+            width: 4.5rem;
+            height: 4.5rem;
+            background: #f0fdf4;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+          "
+        >
+          ✅
+        </div>
+        <h2
+          style="
+            font-family: &quot;Playfair Display&quot;, serif;
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 0.75rem;
+          "
+        >
+          ¡Compra realizada con éxito!
+        </h2>
+        <p
+          style="
+            font-size: 0.9rem;
+            color: #5c5c5c;
+            line-height: 1.7;
+            margin-bottom: 0.5rem;
+          "
+        >
+          Tu pedido ha sido confirmado y está siendo procesado.
+        </p>
+        <p style="font-size: 0.875rem; color: #8a7e72; margin-bottom: 2rem">
+          Recibirás una confirmación pronto. ¡Gracias por elegir Studio Hogar!
+        </p>
+        <div
+          style="
+            background: #fafaf7;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            color: #5c5c5c;
+            border: 1px solid #e8e5e0;
+          "
+        >
+          📦 Tiempo estimado de entrega:
+          <strong style="color: #1a1a1a">3–5 días hábiles</strong><br />
+          📍 Desde Huimanguillo, Tabasco
+        </div>
+        <button
+          onclick="closeSuccess()"
+          style="
+            width: 100%;
+            height: 3rem;
+            border-radius: 9999px;
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 0.875rem;
+            font-weight: 500;
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            transition: background 0.2s;
+          "
+          onmouseover="this.style.background = '#333'"
+          onmouseout="this.style.background = '#1a1a1a'"
+        >
+          Seguir comprando
+        </button>
+      </div>
+    </div>
+
+    <!-- ===================== TOAST CONTAINER ===================== -->
+    <div
+      class="toast-container"
+      id="toast-container"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+
+    <!-- ===================== JAVASCRIPT ===================== -->
+    <script>
+      // ── PRODUCTOS DATA ──────────────────────────────────────────
+      const PRODUCTS = [
+        {
+          id: 1,
+          cat: "sofas",
+          name: "Sofá Lino Beige 3 Plazas",
+          price: 18999,
+          rating: 4.5,
+          desc: "Sofá de lino premium con relleno de pluma. Comodidad y elegancia para tu sala.",
+          img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          id: 2,
+          cat: "sofas",
+          name: "Sofá Curvo Terracota",
+          price: 24500,
+          rating: 5.0,
+          desc: "Diseño escultural en bouclé terracota. Una pieza declarada para tu hogar.",
+          img: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          id: 3,
+          cat: "sillas",
+          name: "Silla Ergonómica Oslo",
+          price: 7990,
+          rating: 5.0,
+          desc: "Silla de oficina ergonómica con soporte lumbar ajustable y malla transpirable.",
+          img: "https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          id: 4,
+          cat: "sillas",
+          name: "Silla Comedor Wishbone",
+          price: 3490,
+          rating: 4.0,
+          desc: "Silla nórdica con asiento de cuerda natural tejida a mano.",
+          img: "https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          id: 5,
+          cat: "escritorios",
+          name: "Escritorio Studio Roble",
+          price: 12500,
+          rating: 5.0,
+          desc: "Escritorio minimalista en madera de roble con cajones ocultos y acabado natural.",
+          img: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          id: 6,
+          cat: "escritorios",
+          name: "Escritorio Eléctrico Altura Ajustable",
+          price: 16900,
+          rating: 4.0,
+          desc: "Motor silencioso, memoria de 4 alturas. Trabaja de pie o sentado.",
+          img: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          id: 7,
+          cat: "iluminacion",
+          name: "Lámpara de Pie Arco Latón",
+          price: 5990,
+          rating: 5.0,
+          desc: "Lámpara de pie estilo Arco con acabado en latón cepillado y pantalla de lino.",
+          img: "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          id: 8,
+          cat: "iluminacion",
+          name: "Lámpara de Mesa Cerámica Mate",
+          price: 2390,
+          rating: 5.0,
+          desc: "Lámpara escultural en cerámica con pantalla de lino crudo.",
+          img: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          id: 9,
+          cat: "sofas",
+          name: "Sillón Lounge Cuero Coñac",
+          price: 19500,
+          rating: 5.0,
+          desc: "Sillón lounge en cuero genuino coñac estilo mid-century. Un clásico contemporáneo.",
+          img: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          id: 10,
+          cat: "escritorios",
+          name: "Escritorio Compacto Nogal",
+          price: 6490,
+          rating: 4.5,
+          desc: "Escritorio compacto para espacios pequeños en madera de nogal con estante integrado.",
+          img: "https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          id: 11,
+          cat: "iluminacion",
+          name: "Lámpara Colgante Globo Opal",
+          price: 3290,
+          rating: 4.8,
+          desc: "Lámpara colgante globo de vidrio opal con detalle en latón cepillado.",
+          img: "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&w=800&q=80",
+        },
+        {
+          id: 12,
+          cat: "sillas",
+          name: "Mesa Centro Mármol Travertino",
+          price: 9800,
+          rating: 5.0,
+          desc: "Mesa de centro en mármol travertino genuino con base de acero inoxidable negro.",
+          img: "https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=800&q=80",
+        },
+      ];
+
+      // ── CART STATE ───────────────────────────────────────────────
+      let cart = [];
+      let activeFilter = "all";
+      let currentProduct = null;
+
+      // ── TOAST ────────────────────────────────────────────────────
+      function showToast(msg, type = "success") {
+        const c = document.getElementById("toast-container");
+        const t = document.createElement("div");
+        t.className = "toast" + (type === "info" ? " info" : "");
+        t.textContent = (type === "success" ? "✓ " : "ℹ ") + msg;
+        c.appendChild(t);
+        setTimeout(() => {
+          t.style.cssText =
+            "opacity:0;transform:translateY(1rem);transition:all 0.3s";
+          setTimeout(() => t.remove(), 300);
+        }, 2800);
+      }
+
+      // ── CART BADGE ───────────────────────────────────────────────
+      function updateBadge() {
+        const total = cart.reduce((s, i) => s + i.qty, 0);
+        const badge = document.getElementById("cart-badge");
+        badge.textContent = total > 9 ? "9+" : total;
+        badge.style.display = total > 0 ? "flex" : "none";
+      }
+
+      // ── RENDER CART ──────────────────────────────────────────────
+      function renderCart() {
+        const body = document.getElementById("cart-body");
+        const footer = document.getElementById("cart-footer");
+        if (cart.length === 0) {
+          body.innerHTML =
+            '<div class="cart-empty"><div class="cart-empty-icon">🛍️</div><p class="cart-empty-title">Tu carrito está vacío</p><p style="font-size:0.875rem">Agrega productos para comenzar</p></div>';
+          footer.style.display = "none";
+          return;
+        }
+        footer.style.display = "block";
+        body.innerHTML = cart
+          .map(
+            (item, i) => `
+    <div class="cart-item">
+      <img class="cart-item-img" src="${item.img}" alt="${item.name}" loading="lazy">
+      <div style="flex:1">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">$${item.price.toLocaleString("es-MX")}</div>
+        <div class="cart-qty">
+          <button class="qty-btn" onclick="changeQty(${i},-1)" aria-label="Quitar uno">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${i},1)" aria-label="Agregar uno">+</button>
+          <button class="remove-btn" onclick="removeItem(${i})">Eliminar</button>
+        </div>
+      </div>
+    </div>`,
+          )
+          .join("");
+        const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+        document.getElementById("cart-total-val").textContent =
+          "$" + total.toLocaleString("es-MX");
+      }
+
+      function changeQty(idx, delta) {
+        cart[idx].qty += delta;
+        if (cart[idx].qty <= 0) cart.splice(idx, 1);
+        updateBadge();
+        renderCart();
+      }
+      function removeItem(idx) {
+        const name = cart[idx].name;
+        cart.splice(idx, 1);
+        updateBadge();
+        renderCart();
+        showToast('"' + name + '" eliminado', "info");
+      }
+
+      // ── ADD FROM MODAL (función directa, evita conflictos de event delegation) ──
+      function addFromModal() {
+        if (!currentProduct) return;
+        addToCart(currentProduct);
+        closeProduct();
+      }
+
+      // ── CHECKOUT SUCCESS ─────────────────────────────────────────
+      function checkoutSuccess() {
+        // Cerrar carrito
+        closeCart();
+        // Limpiar carrito
+        cart = [];
+        updateBadge();
+        // Mostrar modal de éxito
+        const overlay = document.getElementById("success-overlay");
+        const modal = document.getElementById("success-modal");
+        overlay.classList.add("open");
+        requestAnimationFrame(() => modal.classList.add("open"));
+      }
+      function closeSuccess() {
+        const overlay = document.getElementById("success-overlay");
+        const modal = document.getElementById("success-modal");
+        modal.classList.remove("open");
+        setTimeout(() => overlay.classList.remove("open"), 300);
+      }
+
+      // ── OVERLAYS ─────────────────────────────────────────────────
+      function openOverlay(id) {
+        document.getElementById(id).classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+      function closeOverlay(id) {
+        document.getElementById(id).classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      function openCart() {
+        renderCart();
+        openOverlay("cart-overlay");
+      }
+      function closeCart() {
+        closeOverlay("cart-overlay");
+      }
+      function openLogin() {
+        openOverlay("login-overlay");
+      }
+      function closeLogin() {
+        closeOverlay("login-overlay");
+      }
+      function openProduct(p) {
+        currentProduct = p;
+        document.getElementById("pm-img").src = p.img;
+        document.getElementById("pm-img").alt = p.name;
+        document.getElementById("pm-name").textContent = p.name;
+        document.getElementById("pm-price").textContent =
+          "$" + p.price.toLocaleString("es-MX");
+        document.getElementById("pm-desc").textContent = p.desc;
+        document.getElementById("pm-rating").textContent = p.rating.toFixed(1);
+        openOverlay("product-overlay");
+      }
+      function closeProduct() {
+        closeOverlay("product-overlay");
+      }
+
+      // ── ADD TO CART ──────────────────────────────────────────────
+      function addToCart(product) {
+        const ex = cart.find((i) => i.id === product.id);
+        if (ex) {
+          ex.qty++;
+        } else {
+          cart.push({ ...product, qty: 1 });
+        }
+        updateBadge();
+        showToast('"' + product.name + '" agregado al carrito');
+      }
+
+      // ── RENDER PRODUCTS ──────────────────────────────────────────
+      function starSVG() {
+        return '<svg class="star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>';
+      }
+
+      function renderProducts(filter) {
+        const grid = document.getElementById("products-grid");
+        const filtered =
+          filter === "all"
+            ? PRODUCTS
+            : PRODUCTS.filter((p) => p.cat === filter);
+        grid.innerHTML = filtered
+          .map(
+            (p) => `
+    <article class="card" data-id="${p.id}">
+      <div class="card-img-wrap">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        <button class="btn-quickview" data-action="quickview" data-id="${p.id}" aria-label="Vista rápida de ${p.name}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+      <div class="card-body">
+        <div class="card-row">
+          <h3 class="card-name">${p.name}</h3>
+          <div class="card-stars">${starSVG()}<span>${p.rating.toFixed(1)}</span></div>
+        </div>
+        <p class="card-desc">${p.desc}</p>
+        <div class="card-price">$${p.price.toLocaleString("es-MX")}</div>
+        <div class="card-actions">
+          <button class="btn-details" data-action="details" data-id="${p.id}">Ver detalles</button>
+          <button class="btn-add" data-action="add" data-id="${p.id}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            Agregar
+          </button>
+        </div>
+      </div>
+    </article>`,
+          )
+          .join("");
+      }
+
+      // ── EVENT DELEGATION ─────────────────────────────────────────
+      document.addEventListener("click", function (e) {
+        const el = e.target.closest(
+          "[data-action], [data-filter], #btn-cart, #btn-login, #close-cart, #close-product, #close-login, #do-login, #do-register, [data-tab], .overlay, .btn-checkout, .btn-google",
+        );
+        if (!el) return;
+
+        // Cart icon
+        if (el.id === "btn-cart") {
+          openCart();
+          return;
+        }
+        if (el.id === "btn-login") {
+          openLogin();
+          return;
+        }
+        if (el.id === "close-cart") {
+          closeCart();
+          return;
+        }
+        if (el.id === "close-product") {
+          closeProduct();
+          return;
+        }
+        if (el.id === "close-login") {
+          closeLogin();
+          return;
+        }
+
+        // Login / register
+        if (el.id === "do-login") {
+          const em = document.getElementById("l-email").value;
+          const pw = document.getElementById("l-pass").value;
+          if (!em || !pw) {
+            showToast("Completa todos los campos", "info");
+            return;
+          }
+          closeLogin();
+          showToast("Sesión iniciada correctamente");
+          return;
+        }
+        if (el.id === "do-register") {
+          const nm = document.getElementById("r-name").value;
+          const em = document.getElementById("r-email").value;
+          const pw = document.getElementById("r-pass").value;
+          if (!nm || !em || !pw) {
+            showToast("Completa todos los campos", "info");
+            return;
+          }
+          closeLogin();
+          showToast("¡Cuenta creada! Bienvenido/a a Studio Hogar");
+          return;
+        }
+        if (el.classList.contains("btn-google")) {
+          showToast("Inicio con Google no disponible en demo", "info");
+          return;
+        }
+
+        // Modal tabs
+        if (el.dataset.tab) {
+          document
+            .querySelectorAll("[data-tab]")
+            .forEach((t) =>
+              t.classList.toggle("active", t.dataset.tab === el.dataset.tab),
+            );
+          document.getElementById("pane-login").style.display =
+            el.dataset.tab === "login" ? "block" : "none";
+          document.getElementById("pane-register").style.display =
+            el.dataset.tab === "register" ? "block" : "none";
+          return;
+        }
+
+        // Filters
+        if (el.dataset.filter) {
+          activeFilter = el.dataset.filter;
+          document
+            .querySelectorAll(".filter-btn")
+            .forEach((b) =>
+              b.classList.toggle("active", b.dataset.filter === activeFilter),
+            );
+          renderProducts(activeFilter);
+          return;
+        }
+
+        // Product actions
+        if (el.dataset.action) {
+          const p = PRODUCTS.find((x) => x.id === +el.dataset.id);
+          if (!p) return;
+          if (el.dataset.action === "add") {
+            addToCart(p);
+            return;
+          }
+          if (el.dataset.action === "quickview") {
+            openProduct(p);
+            return;
+          }
+          if (el.dataset.action === "details") {
+            openProduct(p);
+            return;
+          }
+        }
+
+        // Checkout
+        if (el.classList.contains("btn-checkout")) {
+          checkoutSuccess();
+          return;
+        }
+
+        // Click outside overlay
+        if (el.classList.contains("overlay") && el === e.target) {
+          closeCart();
+          closeProduct();
+          closeLogin();
+        }
+      });
+
+      // Contact form
+      document
+        .getElementById("contact-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const name = document.getElementById("c-name").value.trim();
+          const email = document.getElementById("c-email").value.trim();
+          const msg = document.getElementById("c-msg").value.trim();
+          if (!name || !email || !msg) {
+            showToast("Completa todos los campos", "info");
+            return;
+          }
+          showToast("Mensaje enviado — te contactaremos pronto");
+          this.reset();
+        });
+
+      // ESC key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeCart();
+          closeProduct();
+          closeLogin();
+        }
+      });
+
+      // ── INIT ─────────────────────────────────────────────────────
+      renderProducts("all");
+    </script>
+  </body>
+</html>
